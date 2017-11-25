@@ -40,6 +40,7 @@ function setup() {
   video = createCapture();
   video.id('webcam');
   video.size(vidWidth, vidHeight)
+  video.volume(0);
   //canvas overlay on video
   canvas = createCanvas(vidWidth, vidHeight);
   canvas.id('canvas');
