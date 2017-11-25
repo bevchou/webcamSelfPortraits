@@ -1,0 +1,63 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#webcam, #canvas {
+  position: absolute;
+  left: 50%;
+  margin-left: -300px;
+  top: 75px;
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 20px;
+}
+
+textentry {
+  position: relative;
+  top: 450px;
+}
+
+textentry ul li {
+  display: inline;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*#thresholdSlider {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  top: 500px;
+}
+
+#thresholdText {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  top: 470px;
+}
+
+#musicBarSlider {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  top: 560px;
+}
+
+#musicBarText {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  top: 530px;
+}*/
