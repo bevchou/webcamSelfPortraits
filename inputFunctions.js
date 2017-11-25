@@ -15,15 +15,6 @@ function inputSetup() {
   adjInput.position(adjInpX, inpY);
 }
 
-// function positionInputs() {
-//   let nameInpX = windowWidth / 2 - 237;
-//   let nounInpX = windowWidth / 2 - 64;
-//   let adjInpX = windowWidth / 2 + 127;
-//   nameInput.position(nameInpX, inpY);
-//   nounInput.position(nounInpX, inpY);
-//   adjInput.position(adjInpX, inpY);
-// }
-
 function updateName() {
   console.log(nameInput.value());
   newName = nameInput.value();
@@ -39,6 +30,10 @@ if (trim(nounInput.value()) != "") {
   for (let i = 0; i < nounPara.length; i++) {
     nounPara[i].position(nounInpX, inpY + 20 * (i - 1));
   }
+  //get photos from flickr
+  flickrQuery = nounInput.value();
+  flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&sort=interestingness-desc&text=' + flickrQuery + '&format=json&nojsoncallback=1';
+  loadJSON(flickrURL, getPhotos);
   //clear input field
   nounInput.remove();
   nounInput = createInput('');
