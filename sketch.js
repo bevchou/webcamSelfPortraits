@@ -8,7 +8,8 @@ let facepos;
 let ctracker;
 let faceX, faceY, faceW, faceH;
 //INPUT FIELDS
-let inpY = 550;
+let inpY = 538;
+let needPosition = true;
 //name
 let nameInput;
 let newName = "Who is this?";
@@ -20,6 +21,7 @@ let nounPara = [];
 let adjInput;
 let adjArray = [];
 let adjPara = [];
+
 //flickr API
 let apiKey = '8f1bf8b1ab45b5399d990540ff031b5d';
 let flickrQuery = 'friendly';
@@ -43,7 +45,7 @@ function setup() {
   canvas.id('canvas');
   pixelDensity(1);
   //DOM elements
-  inputBoxElements();
+  inputSetup();
   //initilize face tracker
   ctracker = new clm.tracker();
   ctracker.init(pModel);
@@ -78,7 +80,6 @@ function draw() {
   //name input on canvas
   textSize(faceW / 5);
   text(newName, faceX - faceW * 0.2, faceY - 50);
-
   //input dropdowns
   push();
   textSize(40);

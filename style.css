@@ -22,42 +22,26 @@ h1 {
 }
 
 textentry {
+  font-size: 12px;
   position: relative;
   top: 450px;
 }
 
+textentry ul {
+  position: relative;
+  top: 10px;
+  padding: 0;
+  margin:0;
+}
+
 textentry ul li {
-  display: inline;
-  padding-left: 20px;
-  padding-right: 20px;
+  font-size: 16px;
+  width: 190px;
+  display: inline-block;
+  text-decoration: underline;
 }
 
-/*#thresholdSlider {
-  position: absolute;
-  left: 50%;
-  margin-left: -100px;
-  top: 500px;
+p {
+  font-size: 12px;
+  padding-top:10px;
 }
-
-#thresholdText {
-  position: absolute;
-  left: 50%;
-  width: 200px;
-  margin-left: -100px;
-  top: 470px;
-}
-
-#musicBarSlider {
-  position: absolute;
-  left: 50%;
-  margin-left: -100px;
-  top: 560px;
-}
-
-#musicBarText {
-  position: absolute;
-  left: 50%;
-  width: 200px;
-  margin-left: -100px;
-  top: 530px;
-}*/
