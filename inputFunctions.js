@@ -1,7 +1,7 @@
 //GLOBAL VARIBLES
 
 //INPUT FIELDS
-let inpY = 538;
+let inpY = 538+20;
 //name
 let nameInput;
 let newName = "Who is this?";

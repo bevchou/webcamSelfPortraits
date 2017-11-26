@@ -11,20 +11,20 @@ html, body {
   position: absolute;
   left: 50%;
   margin-left: -300px;
-  top: 75px;
+  top: 50px;
 }
 
 h1 {
   position: relative;
   margin: 0;
   padding: 0;
-  top: 20px;
+  top: 10px;
 }
 
 textentry {
   font-size: 12px;
   position: relative;
-  top: 450px;
+  top: 470px;
 }
 
 textentry ul {
