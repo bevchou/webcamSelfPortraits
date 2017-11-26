@@ -29,9 +29,7 @@ let flickrURL;
 let flickrData;
 let photoURL;
 let photoArray = [];
-//concept net api
-let conceptNetURL = "http://api.conceptnet.io/c/en/person";
-let conceptNetData;
+
 
 
 
@@ -59,7 +57,8 @@ function setup() {
 
 
 
-//JSON CALL BACK FUNCTIONS
+//flickr loadJSON callback
+//NEED DOM ELEMENTS ON TOP OF CANVAS https://github.com/processing/p5.js/issues/561
 function getPhotos(photoData) {
   flickrData = photoData;
   if (flickrData) {
@@ -76,12 +75,6 @@ function getPhotos(photoData) {
     }
   }
 }
-
-function getWords(wordData) {
-  conceptNetData = wordData;
-  console.log(conceptNetData.edges[0].end.label);
-}
-
 
 
 function draw() {
@@ -103,20 +96,10 @@ function draw() {
   adjInput.changed(updateAdj);
   pop();
 
-  //loop through array to query imgs
-  // for (let i = 0; i < nounArray.length; i++) {
-  //   let flickrQuery = nounArray[i];
-  //   let flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&sort=interestingness-desc&text=' + flickrQuery + '&format=json&nojsoncallback=1';
-  //   loadJSON(flickrURL, getPhotos);
-  //   flickrJSONArray.push(flickrData);
-  // }
-
-
 
 
 
   //show photos
-  // tileImg();
   for (let i = 0; i < photoArray.length; i++) {
     tint(255, 127);
     image(photoArray[i], 75 * i, 0);
@@ -137,21 +120,3 @@ function faceTracking() {
     faceY = facepos[21][1] - faceH * .25;
   }
 }
-
-
-//NEED DOM ELEMENTS ON TOP OF CANVAS https://github.com/processing/p5.js/issues/561
-// function tileImg() {
-//   if (flickrData) {
-//     for (let i = 0; i < 10; i++) {
-//       let farmid = flickrData.photos.photo[i].farm;
-//       let serverid = flickrData.photos.photo[i].server;
-//       let id = flickrData.photos.photo[i].id;
-//       let secret = flickrData.photos.photo[i].secret;
-//       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
-//       photoArray.push(createImg(photoURL));
-//       for (let i = 0; i < photoArray.length; i++) {
-//         photoArray[i].hide();
-//       }
-//     }
-//   }
-// }
