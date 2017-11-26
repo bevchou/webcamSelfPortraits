@@ -1,5 +1,6 @@
 //concepts - self portraits are an expression of ones self perception. their place in society, feelings, mortality, storytelling etc.
 
+//GLOBAL VARIABLES
 //webcam
 let video;
 let vidWidth = 600;
@@ -8,30 +9,10 @@ let vidHeight = 400;
 let facepos;
 let ctracker;
 let faceX, faceY, faceW, faceH;
-//INPUT FIELDS
-let inpY = 538;
-//name
-let nameInput;
-let newName = "Who is this?";
-//nouns
-let nounInput;
-let nounArray = [];
-let nounPara = [];
-//adjectives
-let adjInput;
-let adjArray = [];
-let adjPara = [];
-
-//flickr API
-let apiKey = '8f1bf8b1ab45b5399d990540ff031b5d';
-let flickrQuery;
-let flickrURL;
+//flickr API data
 let flickrData;
 let photoURL;
 let photoArray = [];
-
-
-
 
 function setup() {
   //get webcam
@@ -49,25 +30,23 @@ function setup() {
   ctracker = new clm.tracker();
   ctracker.init(pModel);
   ctracker.start(video.elt);
-  // flickr api
-  // loadJSON(flickrURL, getPhotos);
-  //conceptNet API
-  loadJSON(conceptNetURL, getWords);
 }
 
-
-
 //flickr loadJSON callback
-//NEED DOM ELEMENTS ON TOP OF CANVAS https://github.com/processing/p5.js/issues/561
 function getPhotos(photoData) {
   flickrData = photoData;
+  //once data loads
   if (flickrData) {
     for (let i = 0; i < 2; i++) {
       let farmid = flickrData.photos.photo[i].farm;
       let serverid = flickrData.photos.photo[i].server;
       let id = flickrData.photos.photo[i].id;
       let secret = flickrData.photos.photo[i].secret;
+      //create photo url
       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
+      //and create an array of img elements
+      //how to get DOM elements on top of canvas
+      //https://github.com/processing/p5.js/issues/561
       photoArray.push(createImg(photoURL));
       for (let i = 0; i < photoArray.length; i++) {
         photoArray[i].hide();

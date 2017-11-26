@@ -1,3 +1,24 @@
+//GLOBAL VARIBLES
+
+//INPUT FIELDS
+let inpY = 538;
+//name
+let nameInput;
+let newName = "Who is this?";
+//nouns
+let nounInput;
+let nounArray = [];
+let nounPara = [];
+//adjectives
+let adjInput;
+let adjArray = [];
+let adjPara = [];
+
+//FLICKR API to get JSON
+let apiKey = '8f1bf8b1ab45b5399d990540ff031b5d';
+let flickrQuery;
+let flickrURL;
+
 //DOM elements for setup()
 function inputSetup() {
   nameInpX = windowWidth / 2 - 237;
@@ -15,6 +36,7 @@ function inputSetup() {
   adjInput.position(adjInpX, inpY);
 }
 
+//CALLBACK FUNCTIONS FOR INPUTS
 function updateName() {
   console.log(nameInput.value());
   newName = nameInput.value();
