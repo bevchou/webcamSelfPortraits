@@ -20,7 +20,7 @@ let saveimg_index = 0;
 
 function setup() {
   //get webcam
-  video = createCapture();
+  video = createCapture(VIDEO);
   video.id('webcam');
   video.size(vidWidth, vidHeight)
   video.volume(0);
@@ -40,6 +40,7 @@ function setup() {
   ctracker.start(video.elt);
 }
 
+//????? https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror
 function takeSnap() {
   let filename = 'selfportrait' + saveimg_index;
   saveCanvas(canvas, filename, 'png');
@@ -59,11 +60,7 @@ function getPhotos(photoData) {
       //create photo url
       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
       //and create an array of img elements
-      photoArray.push(createImg(photoURL));
-      for (let i = 0; i < photoArray.length; i++) {
-        //hide DOM element images
-        photoArray[i].hide();
-      }
+      photoArray.push(loadImage(photoURL));
     }
   }
 }
@@ -90,9 +87,6 @@ function draw() {
   pop();
 
 
-
-  //how to get DOM elements on top of canvas
-  //https://github.com/processing/p5.js/issues/561
   //show photos
   for (let i = 0; i < photoArray.length; i++) {
     let y = 0;

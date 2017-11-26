@@ -29,10 +29,10 @@ function inputSetup() {
   nameInput.position(nameInpX, inpY);
   nameInput.changed(updateName);
   //what do you like
-  nounInput = createInput('in one word');
+  nounInput = createInput('');
   nounInput.position(nounInpX, inpY);
   //describe yourself
-  adjInput = createInput('in one word');
+  adjInput = createInput('');
   adjInput.position(adjInpX, inpY);
 }
 
