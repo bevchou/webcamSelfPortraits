@@ -22,24 +22,24 @@ function updateName() {
 
 function updateNoun() {
   //do not allow user to input white space or empty string into the word array
-if (trim(nounInput.value()) != "") {
-  //push input to word array
-  nounArray.push(nounInput.value());
-  //display submitted words below input field
-  nounPara.push(createP(nounInput.value()));
-  for (let i = 0; i < nounPara.length; i++) {
-    nounPara[i].position(nounInpX, inpY + 20 * (i - 1));
+  if (trim(nounInput.value()) != "") {
+    //push input to word array
+    nounArray.push(nounInput.value());
+    //display submitted words below input field
+    nounPara.push(createP(nounInput.value()));
+    for (let i = 0; i < nounPara.length; i++) {
+      nounPara[i].position(nounInpX, inpY + 20 * (i - 1));
+    }
+    //get photos from flickr
+    flickrQuery = nounInput.value();
+    flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&safe_search=1&sort=interestingness-desc&text=' + flickrQuery + '&format=json&nojsoncallback=1';
+    loadJSON(flickrURL, getPhotos);
+    //clear input field
+    nounInput.remove();
+    nounInput = createInput('');
+    nounInput.position(nounInpX, inpY + nounArray.length * 20);
   }
-  //get photos from flickr
-  flickrQuery = nounInput.value();
-  flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&sort=interestingness-desc&text=' + flickrQuery + '&format=json&nojsoncallback=1';
-  loadJSON(flickrURL, getPhotos);
-  //clear input field
-  nounInput.remove();
-  nounInput = createInput('');
-  nounInput.position(nounInpX, inpY + nounArray.length * 20);
-}
-return false;
+  return false;
 }
 
 function updateAdj() {
@@ -52,6 +52,9 @@ function updateAdj() {
     for (let i = 0; i < adjPara.length; i++) {
       adjPara[i].position(adjInpX, inpY + 20 * (i - 1));
     }
+    flickrQuery = adjInput.value();
+    flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&safe_search=1&sort=interestingness-desc&text=' + flickrQuery + '&tags=' + flickrQuery + '&format=json&nojsoncallback=1';
+    loadJSON(flickrURL, getPhotos);
     //clear input field
     adjInput.remove();
     adjInput = createInput('');
