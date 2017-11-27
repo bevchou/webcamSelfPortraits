@@ -10,7 +10,7 @@ function setup() {
   for (let i = 0; i < numBalls; i++) {
 		let r = random(100, 250);
     let theta = 0;
-    let theta_vel = random(-.1, .1);
+    let theta_vel = random(-.05, .05);
     ball.push(new Imgcloud(r, theta, theta_vel));
   }
 }

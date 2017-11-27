@@ -61,9 +61,10 @@ function getPhotos(photoData) {
       //create photo url
       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
       //and create an array of img elements
-      let imgX = random(0, vidWidth + imgW / 2);
-      let imgY = random(0, vidHeight + imgW / 2);
-      photoArray.push(new Imgcloud(loadImage(photoURL), imgX, imgY, random(-5, 5), random(-5, 5)));
+      let r = random(faceH / 2 + 20, vidWidth / 2 + 50);
+      let theta = 0;
+      let theta_vel = random(-.05, .05);
+      photoArray.push(new Imgcloud(loadImage(photoURL), r, theta, theta_vel));
     }
   }
 }
@@ -84,19 +85,24 @@ function draw() {
   adjInput.changed(updateAdj);
 
   //show photos
+  push();
+  imgW = map(faceH, 100, 450, 35, 75);
+  translate(faceCenter.x, faceCenter.y);
   for (let i = 0; i < photoArray.length; i++) {
     photoArray[i].run();
   }
-
+  pop();
+  
   //name input on canvas
   fill(255);
   textSize(faceW / 5);
   textAlign(CENTER);
   text(newName, faceX + faceW * 0.5, faceY - 50);
 
+  // console.log(faceH);
   // ellipse(faceCenter.x, faceCenter.y, faceH, faceH);
-  fill(255, 0, 0, 100);
-  ellipse(faceCenter.x, faceCenter.y, faceH + 200)
+  // fill(255, 0, 0, 100);
+  // ellipse(faceCenter.x, faceCenter.y, faceH + 200)
 }
 
 
