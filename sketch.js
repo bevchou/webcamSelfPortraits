@@ -1,6 +1,9 @@
 //concepts - self portraits are an expression of ones self perception. their place in society, feelings, mortality, storytelling etc.
 
 //GLOBAL VARIABLES
+//font
+let karla;
+let karla_bold;
 //webcam
 let video;
 let vidWidth = 600;
@@ -20,7 +23,14 @@ let imgW = 50;
 let button;
 let saveimg_index = 0;
 
+function preload() {
+  karla = loadFont('Karla/Karla-Regular.ttf');
+  karla_bold = loadFont('Karla/Karla-Bold.ttf');
+}
+
 function setup() {
+  //font
+  textFont(karla);
   //get webcam
   video = createCapture(VIDEO);
   video.id('webcam');
@@ -69,14 +79,11 @@ function getPhotos(photoData) {
   }
 }
 
-
 function draw() {
   //show video
   image(video, 0, 0, vidWidth, vidHeight);
   //run clmtrackr
   faceTracking();
-
-  // rect(faceX, faceY, faceW, faceH);
 
   //input dropdowns
   //what do you like
@@ -94,15 +101,13 @@ function draw() {
   pop();
 
   //name input on canvas
+  push();
+  textFont(karla_bold);
   fill(255, 255,255, 200);
   textSize(faceW / 5);
   textAlign(CENTER);
   text(newName, faceX + faceW * 0.5, faceY - imgW);
-
-  // console.log(faceH);
-  // ellipse(faceCenter.x, faceCenter.y, faceH, faceH);
-  // fill(255, 0, 0, 100);
-  // ellipse(faceCenter.x, faceCenter.y, faceH + 200)
+  pop();
 }
 
 

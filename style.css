@@ -3,8 +3,10 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: sans-serif;
+  font-family: 'Karla', sans-serif;
   text-align: center;
+  background-color: #f4d1fc;
+  color: #33312f;
 }
 
 #webcam, #canvas {
@@ -19,10 +21,11 @@ h1 {
   margin: 0;
   padding: 0;
   top: 10px;
+  color: #f25f3e;
 }
 
 textentry {
-  font-size: 12px;
+  font-size: 14px;
   position: relative;
   top: 470px;
 }
@@ -31,7 +34,7 @@ textentry ul {
   position: relative;
   top: 10px;
   padding: 0;
-  margin:0;
+  margin: 0;
 }
 
 textentry ul li {
@@ -43,5 +46,33 @@ textentry ul li {
 
 p {
   font-size: 12px;
-  padding-top:10px;
+  padding-top: 10px;
+}
+
+bybev {
+  font-size: 10px;
+  position: absolute;
+  left: 50%;
+  margin-left: -460px;
+  top: 50%;
+  margin-top: -100px;
+  -ms-transform: rotate(-90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
+
+credits {
+  font-size: 10px;
+  position: absolute;
+  right: 50%;
+  margin-right: -450px;
+  top: 50%;
+  margin-top: -100px;
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
 }
