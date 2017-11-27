@@ -9,11 +9,12 @@ let vidHeight = 450;
 let facepos;
 let ctracker;
 let faceX, faceY, faceW, faceH;
+let faceCenter;
 //flickr API data
 let flickrData;
 let photoURL;
 let photoArray = [];
-let numImgPerQuery = 3;
+let numImgPerQuery = 10;
 //save snapshot
 let button;
 let saveimg_index = 0;
@@ -40,7 +41,6 @@ function setup() {
   ctracker.start(video.elt);
 }
 
-//????? https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror
 function takeSnap() {
   let filename = 'selfportrait' + saveimg_index;
   saveCanvas(canvas, filename, 'png');
@@ -60,23 +60,20 @@ function getPhotos(photoData) {
       //create photo url
       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
       //and create an array of img elements
-      photoArray.push(loadImage(photoURL));
+      photoArray.push(new Imgcloud(loadImage(photoURL), random(vidWidth-75), random(vidHeight-75), random(-5, 5), random(-5, 5)));
     }
   }
 }
 
 
 function draw() {
-  // clear();
+  //show video
   image(video, 0, 0, vidWidth, vidHeight);
+  //run clmtrackr
   faceTracking();
-  fill(200, 0, 150, 100);
+
   // rect(faceX, faceY, faceW, faceH);
 
-
-  //name input on canvas
-  textSize(faceW / 5);
-  text(newName, faceX - faceW * 0.2, faceY - 50);
   //input dropdowns
   push();
   textSize(40);
@@ -89,14 +86,26 @@ function draw() {
 
   //show photos
   for (let i = 0; i < photoArray.length; i++) {
-    let y = 0;
-    push();
+    // let y = 0;
+    // push();
     // scale(.7);
     // rotate(PI / 4);
-    image(photoArray[i], 75 * i, y);
-    pop();
+    // image(photoArray[i], 75 * i, y);
+    // pop();
+    photoArray[i].run();
   }
 
+
+  //name input on canvas
+  fill(255);
+  textSize(faceW / 5);
+  text(newName, faceX - faceW * 0.2, faceY - 50);
+  //locate face
+  faceCenter = {
+    x: faceX + faceW/2,
+    y: faceY + faceH/2
+  }
+  // ellipse(faceCenter.x, faceCenter.y, faceH, faceH);
 }
 
 
