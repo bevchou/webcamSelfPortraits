@@ -23,13 +23,10 @@ let imgW = 50;
 let button;
 let saveimg_index = 0;
 
-function preload() {
-  karla = loadFont('Karla/Karla-Regular.ttf');
-  karla_bold = loadFont('Karla/Karla-Bold.ttf');
-}
-
 function setup() {
   //font
+  karla = loadFont('Karla/Karla-Regular.ttf');
+  karla_bold = loadFont('Karla/Karla-Bold.ttf');
   textFont(karla);
   //get webcam
   video = createCapture(VIDEO);
@@ -103,8 +100,8 @@ function draw() {
   //name input on canvas
   push();
   textFont(karla_bold);
-  fill(255, 255,255, 200);
-  textSize(faceW / 5);
+  fill(255, 255, 255, 200);
+  textSize(map(faceW, 70, 250, 25, 60));
   textAlign(CENTER);
   text(newName, faceX + faceW * 0.5, faceY - imgW);
   pop();
