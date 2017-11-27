@@ -33,8 +33,8 @@ function setup() {
   pixelDensity(1);
   //DOM elements
   inputSetup();
-  button = createButton('save!');
-  button.position(windowWidth / 2 + 320, 450);
+  button = createButton('Save portrait!');
+  button.position(windowWidth / 2 + 207, 475);
   button.mousePressed(takeSnap);
   //initilize face tracker
   ctracker = new clm.tracker();
@@ -85,19 +85,19 @@ function draw() {
   adjInput.changed(updateAdj);
 
   //show photos
-  push();
   imgW = map(faceH, 100, 450, 35, 75);
+  push();
   translate(faceCenter.x, faceCenter.y);
   for (let i = 0; i < photoArray.length; i++) {
     photoArray[i].run();
   }
   pop();
-  
+
   //name input on canvas
-  fill(255);
+  fill(255, 255,255, 200);
   textSize(faceW / 5);
   textAlign(CENTER);
-  text(newName, faceX + faceW * 0.5, faceY - 50);
+  text(newName, faceX + faceW * 0.5, faceY - imgW);
 
   // console.log(faceH);
   // ellipse(faceCenter.x, faceCenter.y, faceH, faceH);
