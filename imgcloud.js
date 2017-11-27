@@ -7,24 +7,27 @@ class Imgcloud {
     this.xspeed = xspeed;
     this.yspeed = yspeed;
     //internal variables
-    this.imgW = 50;
+
   }
   run() {
     this.update();
     this.display();
   }
   update() {
-    this.xspeed = bounce(this.x, this.xspeed, 0, vidWidth);
-    this.xspeed = bounce(this.x+this.imgW, this.xspeed, 0, vidWidth);
-    this.yspeed = bounce(this.y, this.yspeed, 0, vidHeight);
-    this.yspeed = bounce(this.y+this.imgW, this.yspeed, 0, vidHeight);
-    this.x = move(this.x, this.xspeed);
-    this.y = move(this.y, this.yspeed);
+    // this.xspeed = bounce(this.x, this.xspeed, 0, vidWidth);
+    // this.xspeed = bounce(this.x+imgW, this.xspeed, 0, vidWidth);
+    // this.yspeed = bounce(this.y, this.yspeed, 0, vidHeight);
+    // this.yspeed = bounce(this.y+imgW, this.yspeed, 0, vidHeight);
+    // this.x = move(this.x, this.xspeed);
+    // this.y = move(this.y, this.yspeed);
+
+    // this.x = faceCenter.x + random(-100, 100);
+    // this.y = faceCenter.y + random(-100, 100);
   }
   display() {
     push();
-    translate()
-    image(this.img, this.x, this.y, this.imgW, this.imgW);
+    translate(-imgW/2, -imgW/2);
+    image(this.img, this.x, this.y, imgW, imgW);
     pop();
   }
 }

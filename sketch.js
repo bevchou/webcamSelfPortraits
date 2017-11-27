@@ -15,6 +15,7 @@ let flickrData;
 let photoURL;
 let photoArray = [];
 let numImgPerQuery = 10;
+let imgW = 50;
 //save snapshot
 let button;
 let saveimg_index = 0;
@@ -60,7 +61,9 @@ function getPhotos(photoData) {
       //create photo url
       photoURL = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_s.jpg';
       //and create an array of img elements
-      photoArray.push(new Imgcloud(loadImage(photoURL), random(vidWidth-75), random(vidHeight-75), random(-5, 5), random(-5, 5)));
+      let imgX = random(0, vidWidth + imgW / 2);
+      let imgY = random(0, vidHeight + imgW / 2);
+      photoArray.push(new Imgcloud(loadImage(photoURL), imgX, imgY, random(-5, 5), random(-5, 5)));
     }
   }
 }
@@ -75,37 +78,25 @@ function draw() {
   // rect(faceX, faceY, faceW, faceH);
 
   //input dropdowns
-  push();
-  textSize(40);
   //what do you like
   nounInput.changed(updateNoun);
   //describe yourself
   adjInput.changed(updateAdj);
-  pop();
-
 
   //show photos
   for (let i = 0; i < photoArray.length; i++) {
-    // let y = 0;
-    // push();
-    // scale(.7);
-    // rotate(PI / 4);
-    // image(photoArray[i], 75 * i, y);
-    // pop();
     photoArray[i].run();
   }
-
 
   //name input on canvas
   fill(255);
   textSize(faceW / 5);
-  text(newName, faceX - faceW * 0.2, faceY - 50);
-  //locate face
-  faceCenter = {
-    x: faceX + faceW/2,
-    y: faceY + faceH/2
-  }
+  textAlign(CENTER);
+  text(newName, faceX + faceW * 0.5, faceY - 50);
+
   // ellipse(faceCenter.x, faceCenter.y, faceH, faceH);
+  fill(255, 0, 0, 100);
+  ellipse(faceCenter.x, faceCenter.y, faceH + 200)
 }
 
 
@@ -119,5 +110,10 @@ function faceTracking() {
     faceH = (facepos[7][1] - facepos[16][1]) * 1.25;
     faceX = facepos[1][0];
     faceY = facepos[21][1] - faceH * .25;
+  }
+  //locate center of face
+  faceCenter = {
+    x: faceX + faceW / 2,
+    y: faceY + faceH / 2
   }
 }
