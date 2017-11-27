@@ -1,7 +1,9 @@
 //GLOBAL VARIBLES
 
 //INPUT FIELDS
-let inpY = 538+20;
+let inpY = 600;
+let inpW = 120;
+let inpH = 18;
 //name
 let nameInput;
 let newName = "Who is this?";
@@ -21,18 +23,22 @@ let flickrURL;
 
 //DOM elements for setup()
 function inputSetup() {
-  nameInpX = windowWidth / 2 - 237;
-  nounInpX = windowWidth / 2 - 64;
+  nameInpX = windowWidth / 2 - 240;
+  nounInpX = windowWidth / 2 - 65.5;
   adjInpX = windowWidth / 2 + 127;
   //name
-  nameInput = createInput('Who is this?');
-  nameInput.position(nameInpX, inpY);
+  nameInput = createInput('');
+  nameInput.size(inpW, inpH);
+  // nameInput.position(nameInpX, inpY);
+  nameInput.id('name');
   nameInput.changed(updateName);
   //what do you like
   nounInput = createInput('');
+  nounInput.size(inpW, inpH);
   nounInput.position(nounInpX, inpY);
   //describe yourself
   adjInput = createInput('');
+  adjInput.size(inpW, inpH);
   adjInput.position(adjInpX, inpY);
 }
 

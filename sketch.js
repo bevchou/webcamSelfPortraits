@@ -41,7 +41,8 @@ function setup() {
   //DOM elements
   inputSetup();
   button = createButton('Save portrait!');
-  button.position(windowWidth / 2 + 207, 475);
+  button.id('takesnap');
+  // button.position(windowWidth / 2 + 207, 475);
   button.mousePressed(takeSnap);
   //initilize face tracker
   ctracker = new clm.tracker();
